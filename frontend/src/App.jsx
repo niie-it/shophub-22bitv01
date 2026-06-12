@@ -1,18 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import Header from './components/Header';
+import Banner from './components/Banner';
+import FeatureSection from './components/FeatureSection';
+import Footer from './components/Footer';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <section id="center">
-        <h1>ShopHub</h1>
-        <h2>Welcome to our store</h2>
-      </section>
+      <Header title="ShopHub" />
+      <Banner
+        subtitle="Welcome to our store"
+        buttonText="Shop Now"
+      />
+      <FeatureSection />
+      <Footer
+        studentName="Nguyen Van A"
+        courseName="Full-Stack Web Development"
+      />
     </>
   )
 }
