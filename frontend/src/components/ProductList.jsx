@@ -1,7 +1,26 @@
-import products from '../data/products.json';
-import {ProductCard} from './ProductCard';
+import axios from 'axios';
+// import products from '../data/products.json';
+import { ProductCard } from './ProductCard';
+import { useEffect, useState } from 'react';
 
 export const ProductList = () => {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    //hàm xử lý thay đổi
+    axios.get('https://fakestoreapi.com/products')
+      .then((json) => {
+        if (json.status === 200) {
+          console.log(json.data);
+          setProducts(json.data);
+          setIsLoading(false);
+        }
+      })
+      .catch()
+      .finally();
+    // return nếu có
+  }, []);//load lần đầu dùng []
+
   return (
     <section style={{ padding: '24px' }}>
       <h2>Product Catalog</h2>
@@ -14,13 +33,16 @@ export const ProductList = () => {
           gap: '16px',
         }}
       >
+        {isLoading && (
+          <div>Đang tải dữ liệu......</div>
+        )}
         {products.map((product) => (
           <ProductCard
             key={product.id} // key is important for React list rendering
             name={product.name}
             price={product.price}
             category={product.category}
-            imageUrl={product.imageUrl}
+            imageUrl={product.image}
             description={product.description}
           />
         ))}

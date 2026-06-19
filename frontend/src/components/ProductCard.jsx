@@ -19,7 +19,7 @@ export const ProductCard = ({ name, price, category, imageUrl, description }) =>
       <h3 style={{ margin: '4px 0' }}>{name}</h3>
       <p style={{ margin: '4px 0', color: '#757575' }}>{category}</p>
       <p style={{ margin: '4px 0', fontWeight: 'bold' }}>${price}</p>
-      <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#555' }}>{description}</p>
+      {/* <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#555' }}>{description}</p> */}
       <button
         style={{
           marginTop: 'auto',
