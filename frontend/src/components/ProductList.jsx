@@ -39,6 +39,7 @@ export const ProductList = () => {
         {products.map((product) => (
           <ProductCard
             key={product.id} // key is important for React list rendering
+            id={product.id}
             name={product.name}
             price={product.price}
             category={product.category}

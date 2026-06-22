@@ -1,6 +1,20 @@
 // src/components/Header.jsx
+import { NavLink } from 'react-router-dom';
 const Header = ({ title }) => {
-  const navItems = ['Home', 'Products', 'Cart', 'Login'];
+  // const navItems = ['Home', 'Products', 'Cart', 'Login'];
+  const navItems = [
+    { label: 'Home', to: '/' },
+    { label: 'Products', to: '/products' },
+    { label: 'Cart', to: '/cart' },
+    { label: 'Login', to: '/login' },
+  ];
+
+  const linkStyle = ({ isActive }) => ({
+    marginRight: '12px',
+    textDecoration: 'none',
+    color: isActive ? '#1976d2' : '#555',
+    fontWeight: isActive ? 'bold' : 'normal',
+  });
 
   return (
     <header
@@ -15,13 +29,13 @@ const Header = ({ title }) => {
       <h1 style={{ margin: 0 }}>{title}</h1>
       <nav>
         {navItems.map((item) => (
-          <a
-            key={item}
-            href="#"
-            style={{ marginRight: '12px', textDecoration: 'none', color: '#1976d2' }}
+          <NavLink
+            key={item.to}
+            to={item.to}
+            style={linkStyle}
           >
-            {item}
-          </a>
+            {item.label}
+          </NavLink>
         ))}
       </nav>
     </header>

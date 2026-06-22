@@ -1,4 +1,5 @@
-export const ProductCard = ({ name, price, category, imageUrl, description }) => {
+import { Link } from 'react-router-dom';
+export const ProductCard = ({ id, name, price, category, imageUrl, description }) => {
   return (
     <div
       style={{
@@ -20,19 +21,21 @@ export const ProductCard = ({ name, price, category, imageUrl, description }) =>
       <p style={{ margin: '4px 0', color: '#757575' }}>{category}</p>
       <p style={{ margin: '4px 0', fontWeight: 'bold' }}>${price}</p>
       {/* <p style={{ margin: '4px 0', fontSize: '0.9rem', color: '#555' }}>{description}</p> */}
-      <button
+      <Link
+        to={`/products/${id}`}
         style={{
           marginTop: 'auto',
           padding: '8px 12px',
           backgroundColor: '#1976d2',
           color: '#fff',
-          border: 'none',
           borderRadius: '4px',
-          cursor: 'pointer',
+          textAlign: 'center',
+          textDecoration: 'none',
         }}
       >
         View Details
-      </button>
+      </Link>
+
     </div>
   );
 };
